@@ -1,0 +1,14 @@
+<h2>Edit this Creature</h2>
+
+<h3><%= @creature.name %></h3>
+<p><%= @creature.desc %></p>
+
+<div class="row">
+  <div class="col-md-4 col-md-offset-4">
+    <%= bootstrap_form_for @creature do |f| %>
+    <%= f.text_field :name, :placeholder =>"Enter a creature" %>
+    <%= f.text_field :desc, :placeholder => "Enter a description" %>
+    <%= f.primary %>
+    <% end %>
+  </div>
+</div>
