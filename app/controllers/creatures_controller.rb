@@ -28,7 +28,8 @@ class CreaturesController < ApplicationController
 
   def destroy
     @creature = Creature.destroy(params[:id])
-    redirect_to @creature
+    # redirect_to @creature
+    redirect_to creatures_path
   end
 
   private
