@@ -6,7 +6,12 @@
     <h3><%= @creature.name %></h3>
     <p><%= @creature.desc %></p>
 
-    <%= link_to "Edit this Creature", edit_creature_path, :class=>"btn btn-primary" %>
-    <%= link_to "Delete this Creature", creature_path(@creature), :method => :delete, :class=>"btn btn-danger" %>
+    <%= link_to "Edit", edit_creature_path, :class=>"btn btn-primary" %>
+    <%= link_to "Delete", creature_path(@creature), :method => :delete, :class=>"btn btn-danger" %>
+    <%= link_to raw("<i class=\"glyphicon glyphicon-trash\"></i>"), creature_path(@creature), :method => :delete , :class=>"btn btn-danger" %>
   </div>
 </div>
+
+<!-- span.glyphicon.glyphicon-trash, -->
+<!-- <i class="icon-ok icon-white"></i> -->
+<!-- icon: "user" -->
