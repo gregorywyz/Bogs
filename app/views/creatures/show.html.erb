@@ -8,7 +8,7 @@
 
     <%= link_to "Edit", edit_creature_path, :class=>"btn btn-primary" %>
     <%= link_to "Delete", creature_path(@creature), :method => :delete, :class=>"btn btn-danger" %>
-    <%= link_to raw("<i class=\"glyphicon glyphicon-trash\"></i>"), creature_path(@creature), :method => :delete , :class=>"btn btn-danger" %>
+    <%= link_to raw("<i class=\"glyphicon glyphicon-trash\"></i>"), creature_path(@creature), :method => :delete, data:{confirm: "You will delete this creature."}, :class=>"btn btn-danger" %>
   </div>
 </div>
 
