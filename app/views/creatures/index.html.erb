@@ -1,14 +1,17 @@
 <h2>Creatures of the Bog</h2>
 
+<%= link_to "Add a new Creature", new_creature_path, :class=>"btn btn-primary" %>
 
 <div class="row">
   <div class="col-md-4 col-md-offset-4">
     <% @creatures.each do |c| %>
 
-      <li><%= link_to c.name, c %></li>
+      <li>
+      <%= link_to c.name, c %></li>
+      <%= link_to raw("<i class=\"glyphicon glyphicon-pencil\"></i>"), edit_creature_path(c.id), :class=>"btn btn-primary" %>
+      <%= link_to raw("<i class=\"glyphicon glyphicon-trash\"></i>"), creature_path(c.id), :method => :delete, data:{confirm: "You will delete this creature."}, :class=>"btn btn-danger" %>
 
     <% end %>
   </div>
 </div>
 
-<%= link_to "Add a new Creature", new_creature_path, :class=>"btn btn-primary" %>
