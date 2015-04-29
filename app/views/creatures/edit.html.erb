@@ -8,6 +8,7 @@
     <%= bootstrap_form_for @creature do |f| %>
     <%= f.text_field :name %>
     <%= f.text_field :desc %>
+    <%= f.collection_check_boxes :tag_ids, @tags, :id, :name %>
     <%= f.primary :class => "btn btn-success" %>
     <% end %>
   </div>

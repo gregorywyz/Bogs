@@ -5,6 +5,7 @@
     <%= bootstrap_form_for @creature do |f| %>
     <%= f.text_field :name, :placeholder =>"Enter a creature" %>
     <%= f.text_field :desc, :placeholder => "Enter a description" %>
+    <%= f.collection_check_boxes :tag_ids, @tags, :id, :name %>
     <%= f.primary %>
     <% end %>
   </div>
