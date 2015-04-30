@@ -10,7 +10,10 @@
     <hr>
 
     <h4>Tags</h4>
-    <%=  @creature.tags.map {|tag| tag.name}.join(', ') %>
+
+    <% @creature.tags.each do |tag| %>
+      <li><%= tag.name %></li>
+    <% end %>
 
     <hr>
 
