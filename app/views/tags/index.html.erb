@@ -7,7 +7,7 @@
     <% @tags.each do |tag| %>
 
       <li><%= link_to tag.name, tag %></li>
-      <%= link_to raw("<i class=\"glyphicon glyphicon-trash\"></i>"), tag_path(tag.id), :method => :delete, data:{confirm: "You will delete this tag."}, :class=>"btn btn-danger" %>
+      <%= link_to raw("<i class=\"glyphicon glyphicon-trash\"></i>"), tag_path(tag.id), :method => :delete, data:{confirm: "You will delete this tag from #{tag.creatures.length} " + "creature".pluralize(tag.creatures.length) + "."}, :class=>"btn btn-danger" %>
 
     <% end %>
   </div>
