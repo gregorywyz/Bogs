@@ -30,7 +30,7 @@ class TagsController < ApplicationController
     unless @tag.creatures
       Tag.destroy(params[:id])
     else
-      flash[:info] = "You removed the #{@tag.name} tag from  #{@tag.creatures.length} " + "creature".pluralize(@tag.creatures.length) + "."
+      flash[:danger] = "You removed the #{@tag.name} tag from  #{@tag.creatures.length} " + "creature".pluralize(@tag.creatures.length) + "."
       @tag.creatures do |creature|
         creature.tags.delete(params[:id])
       end

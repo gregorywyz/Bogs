@@ -1,14 +1,26 @@
 <h2>Tags INdex</h2>
 
-<%= render "layouts/flash" %>
+<%= link_to "Add a new Tag", new_tag_path, :class=>"btn btn-primary" %>
 
 <div class="row">
   <div class="col-md-4 col-md-offset-4">
-    <% @tags.each do |tag| %>
 
-      <li><%= link_to tag.name, tag %></li>
-      <%= link_to raw("<i class=\"glyphicon glyphicon-trash\"></i>"), tag_path(tag.id), :method => :delete, data:{confirm: "You will delete this tag from #{tag.creatures.length} " + "creature".pluralize(tag.creatures.length) + "."}, :class=>"btn btn-danger" %>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Tags</th>
+          <th class="text-right">Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @tags.each do |tag| %>
+          <tr>
+            <td><%= link_to tag.name, tag %></td>
+            <td class="text-right"> <%= link_to raw("<i class=\"glyphicon glyphicon-trash\"></i>"), tag_path(tag.id), :method => :delete, data:{confirm: "You will delete this tag from #{tag.creatures.length} " + "creature".pluralize(tag.creatures.length) + "."}, :class=>"btn btn-danger" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
 
-    <% end %>
   </div>
 </div>
