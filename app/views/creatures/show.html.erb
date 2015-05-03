@@ -21,5 +21,18 @@
     <%= link_to "Delete", creature_path(@creature), :method => :delete, :class=>"btn btn-danger" %>
     <%= link_to raw("<i class=\"glyphicon glyphicon-trash\"></i>"), creature_path(@creature), :method => :delete, data:{confirm: "You will delete this creature."}, :class=>"btn btn-danger" %>
 
+    <hr>
+
+    <!-- Link and pic of one -->
+    <%= link_to "Photo Here", @img_url, :class => "btn btn-link" %>
+    <img src="<%= @img_url %>">
+
+    <hr>
+
+    <!-- Pics with link from array -->
+    <% @url_list.each do |photo| %>
+      <a href="<%= photo %>" target="_blank"><img src="<%= photo %>" href="<%= photo %>"></a>
+    <% end %>
+
   </div>
 </div>

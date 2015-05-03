@@ -1,5 +1,6 @@
 class CreaturesController < ApplicationController
 
+
   def index
     @creatures = Creature.all
   end
@@ -21,6 +22,22 @@ class CreaturesController < ApplicationController
 
   def show
     @creature = Creature.find(params[:id])
+
+    # Flicker API
+
+    photo_list = flickr.photos.search :text => "snake", :per_page => 10, :sort => "relevance"
+
+    id = photo_list[0].id
+    secret = photo_list[0].secret
+    info = flickr.photos.getInfo :photo_id => id
+
+    @img_url = FlickRaw.url_c(info)
+
+    @url_list = []
+    photo_list.each do |item|
+      item_info = flickr.photos.getInfo :photo_id => item.id
+      @url_list << FlickRaw.url_c(item_info)
+    end
   end
 
   def edit
