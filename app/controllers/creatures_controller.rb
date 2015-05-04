@@ -25,35 +25,22 @@ class CreaturesController < ApplicationController
     @url_list = []
 
     # Flicker API
-
     photo_list = flickr.photos.search :text => @creature.name, :content_type => 1, :per_page => 10, :privacy_filter => 1, :sort => "relevance"
-
-    # id = photo_list[0].id
-    # secret = photo_list[0].secret
-    # info = flickr.photos.getInfo :photo_id => id
-
-    # # render :json => info
-    # @img_url = FlickRaw.url_c(info)
+    # render :json => photo_list
 
     photo_list.each do |item|
-
-      p "new item found ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-
       item_info = flickr.photos.getInfo :photo_id => item.id
-
-      # # gives url to page with pic
-      # puts item_info.urls[0]._content
-
       @url_list << FlickRaw.url(item_info)
 
+      # # trying to allow for image url and page url to both be passed to render (attmpt 1)
       # @url_list << {:pic => FlickRaw.url(item_info), :url => item_info.urls[0]._content}
     end
 
-    # @url_list = photo_list.map do |item|
-    #   item_info = flickr.photos.getInfo :photo_id => item.id
-    #   {:pic => FlickRaw.url(item_info), :url => item_info.urls[0]._content}
-    # end
-    # render :json => @url_list
+      # # trying to allow for image url and page url to both be passed to render (attmpt 2)
+      # @url_list = photo_list.map do |item|
+      #   item_info = flickr.photos.getInfo :photo_id => item.id
+      #   {:pic => FlickRaw.url(item_info), :url => item_info.urls[0]._content}
+      # end
   end
 
   def edit

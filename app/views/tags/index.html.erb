@@ -1,22 +1,23 @@
-<h2>Tags INdex</h2>
-
-<%= link_to "Add a new Tag", new_tag_path, :class=>"btn btn-primary" %>
-
 <div class="row">
-  <div class="col-md-4 col-md-offset-4">
+  <div class="col-md-6 col-md-offset-3">
 
-    <table class="table table-hover">
+    <h2>Tags INdex</h2>
+
+    <%= link_to "Add a new Tag", new_tag_path, :class=>"index-add-btn btn btn-primary" %>
+
+
+    <table class="table table-responsive">
       <thead>
         <tr>
           <th>Tags</th>
-          <th class="text-right">Delete</th>
+          <th class="text-center">Delete</th>
         </tr>
       </thead>
       <tbody>
         <% @tags.each do |tag| %>
           <tr>
             <td><%= link_to tag.name, tag, :class=>"btn btn-info" %></td>
-            <td class="text-right"> <%= link_to raw("<i class=\"glyphicon glyphicon-trash\"></i>"), tag_path(tag.id), :method => :delete, data:{confirm: "You will delete this tag from #{tag.creatures.length} " + "creature".pluralize(tag.creatures.length) + "."}, :class=>"btn btn-danger" %></td>
+            <td class="text-center"> <%= link_to raw("<i class=\"glyphicon glyphicon-trash\"></i>"), tag_path(tag.id), :method => :delete, data:{confirm: "You will delete this tag from #{tag.creatures.length} " + "creature".pluralize(tag.creatures.length) + "."}, :class=>"btn btn-danger btn-sm" %></td>
           </tr>
         <% end %>
       </tbody>

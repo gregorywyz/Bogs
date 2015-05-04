@@ -1,15 +1,18 @@
-<h2>Edit this Creature</h2>
-
-<h3><%= @creature.name %></h3>
-<p><%= @creature.desc %></p>
-
 <div class="row">
   <div class="col-md-4 col-md-offset-4">
+
+    <h2>Edit this Creature</h2>
+
+    <h3><%= @creature.name %></h3>
+    <p class="creature-desc"><%= @creature.desc %></p>
+
+    <hr>
+
     <%= bootstrap_form_for @creature do |f| %>
     <%= f.text_field :name %>
     <%= f.text_field :desc %>
     <%= f.collection_check_boxes :tag_ids, @tags, :id, :name %>
-    <%= f.primary :class => "btn btn-success" %>
+    <%= f.submit "Update Creature", :class => "new-page-btn btn btn-success" %>
     <% end %>
   </div>
 </div>

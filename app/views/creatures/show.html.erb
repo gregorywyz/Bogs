@@ -1,8 +1,6 @@
-<h2>Creature Feature</h2>
-
-
 <div class="row">
-  <div class="col-md-4 col-md-offset-4">
+  <div class="col-md-8 col-md-offset-2">
+    <h2>Creature Feature</h2>
 
     <h3><%= @creature.name %></h3>
     <p><%= @creature.desc %></p>
@@ -17,17 +15,50 @@
 
     <hr>
 
-    <%= link_to "Edit", edit_creature_path, :class=>"btn btn-primary" %>
-    <%= link_to "Delete", creature_path(@creature), :method => :delete, :class=>"btn btn-danger" %>
-    <%= link_to raw("<i class=\"glyphicon glyphicon-trash\"></i>"), creature_path(@creature), :method => :delete, data:{confirm: "You will delete this creature."}, :class=>"btn btn-danger" %>
+    <%= link_to "Edit", edit_creature_path, :class=>"new-page-btn btn btn-primary" %>
+    <%= link_to raw("<i class=\"glyphicon glyphicon-trash\"></i>"), creature_path(@creature), :method => :delete, data:{confirm: "You will delete this creature."}, :class=>"new-page-btn btn btn-danger" %>
+
+    <div class="row">
+      <% @url_list.each do |photo|%>
+      <div class="col-xs-12">
+        <a href="<%= photo %>" >
+          <img src="<%= photo %>" class="show-pics img-responsive" target="_blank">
+        </a>
+      </div>
+      <% end %>
+    </div>
 
     <hr>
 
-    <!-- Pics with link from array -->
-    <% @url_list.each do |photo| %>
-      <a href="<%= photo %>" target="_blank"><img src="<%= photo %>" style="width: 150px; height: 150px;"></a>
-    <% end %>
+    <div id="show-carousel" class="carousel slide" data-ride="carousel" style="margin-top: 30px;">
+        <ol class="carousel-indicators">
+            <li data-target="#show-carousel" data-slide-to="0" class="active"></li>
+            <% @url_list.each_with_index do |photo, idx| %>
+            <li data-target="#show-carousel" data-slide-to="<%= idx %>" class=""></li>
+            <% end %>
+        </ol>
+        <div class="carousel-inner">
+            <div class="item active">
+                <img src="https://s-media-cache-ak0.pinimg.com/originals/08/83/d2/0883d25dd26d9dc464b1944da929213a.jpg">
+                <div class="container">
+                    <div class="carousel-caption">
+                    <h3>Found in the Bog</h3>
+                    </div>
+                </div>
+            </div>
+            <% @url_list.each do |photo| %>
+            <div class="item">
+                <!-- <img src="<%= photo %>"> -->
+                <a href="<%= photo %>" target="_blank"><img src="<%= photo %>" style="width: 300px; height: 300px; margin-left: auto; margin-right: auto;"></a>
+            </div>
+            <% end %>
+        </div>
+        <a class="left carousel-control" href="#show-carousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+        <a class="right carousel-control" href="#show-carousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+    </div>
 
   </div>
 </div>
+
+
 
