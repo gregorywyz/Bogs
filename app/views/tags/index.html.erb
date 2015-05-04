@@ -15,7 +15,7 @@
       <tbody>
         <% @tags.each do |tag| %>
           <tr>
-            <td><%= link_to tag.name, tag %></td>
+            <td><%= link_to tag.name, tag, :class=>"btn btn-info" %></td>
             <td class="text-right"> <%= link_to raw("<i class=\"glyphicon glyphicon-trash\"></i>"), tag_path(tag.id), :method => :delete, data:{confirm: "You will delete this tag from #{tag.creatures.length} " + "creature".pluralize(tag.creatures.length) + "."}, :class=>"btn btn-danger" %></td>
           </tr>
         <% end %>

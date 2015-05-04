@@ -22,22 +22,38 @@ class CreaturesController < ApplicationController
 
   def show
     @creature = Creature.find(params[:id])
+    @url_list = []
 
     # Flicker API
 
-    photo_list = flickr.photos.search :text => "snake", :per_page => 10, :sort => "relevance"
+    photo_list = flickr.photos.search :text => @creature.name, :content_type => 1, :per_page => 10, :privacy_filter => 1, :sort => "relevance"
 
-    id = photo_list[0].id
-    secret = photo_list[0].secret
-    info = flickr.photos.getInfo :photo_id => id
+    # id = photo_list[0].id
+    # secret = photo_list[0].secret
+    # info = flickr.photos.getInfo :photo_id => id
 
-    @img_url = FlickRaw.url_c(info)
+    # # render :json => info
+    # @img_url = FlickRaw.url_c(info)
 
-    @url_list = []
     photo_list.each do |item|
+
+      p "new item found ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+
       item_info = flickr.photos.getInfo :photo_id => item.id
-      @url_list << FlickRaw.url_c(item_info)
+
+      # # gives url to page with pic
+      # puts item_info.urls[0]._content
+
+      @url_list << FlickRaw.url(item_info)
+
+      # @url_list << {:pic => FlickRaw.url(item_info), :url => item_info.urls[0]._content}
     end
+
+    # @url_list = photo_list.map do |item|
+    #   item_info = flickr.photos.getInfo :photo_id => item.id
+    #   {:pic => FlickRaw.url(item_info), :url => item_info.urls[0]._content}
+    # end
+    # render :json => @url_list
   end
 
   def edit

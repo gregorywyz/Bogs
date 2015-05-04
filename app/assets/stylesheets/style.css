@@ -1,3 +1,34 @@
+body {
+  background: url("http://i.imgur.com/tPJ1aMv.jpg") no-repeat center center fixed;
+  background-size: cover;
+  font-family: "Noto Sans", Helvetica;
+}
+
+#el-div-grande {
+  color: #CC66FF;
+  font-family: "Noto Sans", Helvetica;
+}
+
 li {
   list-style: none;
+}
+
+#navbar {
+  background-color: rgba(20,20,20,.8);
+  border-color: #CC66FF;
+}
+
+#navbar-brand {
+  color: white;
+  font-family: "Freckle Face", Helvetica;
+  font-size: 35px;
+}
+
+#navbar-ul > li > a {
+  color: white;
+}
+
+h2 {
+  font-family: "Freckle Face", Helvetica;
+  color: white;
 }

@@ -10,6 +10,7 @@ class TagsController < ApplicationController
 
   def new
     @tag = Tag.new
+    @tags = Tag.all
   end
 
   def create

@@ -1,2 +1,2 @@
-FlickRaw.api_key="2b647b490de35a18ce8a1624af131ecf"
-FlickRaw.shared_secret="e729014049c077af"
+FlickRaw.api_key=ENV["FLICKR_API_KEY"]
+FlickRaw.shared_secret=ENV["FLICKR_API_SECRET"]
