@@ -21,7 +21,6 @@ class TagsController < ApplicationController
   def destroy
     @tag = Tag.find(params[:id])
 
-
     # unless @tag.creatures
     #   Tag.destroy(params[:id])
     # else
