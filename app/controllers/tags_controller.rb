@@ -14,8 +14,14 @@ class TagsController < ApplicationController
   end
 
   def create
-    @tag = Tag.create(tag_params)
-    redirect_to tags_path
+
+    if tag_params[:name] == ""
+      flash[:danger] = "You need to enter a tag, dummy!"
+      redirect_to new_tag_path
+    else
+      @tag = Tag.create(tag_params)
+      redirect_to
+    end
   end
 
   def destroy
