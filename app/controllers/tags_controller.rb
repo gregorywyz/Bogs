@@ -20,7 +20,7 @@ class TagsController < ApplicationController
       redirect_to new_tag_path
     else
       @tag = Tag.create(tag_params)
-      redirect_to
+      redirect_to tags_path
     end
   end
 
